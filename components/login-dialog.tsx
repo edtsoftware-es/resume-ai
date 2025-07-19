@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -18,7 +19,6 @@ import {
 } from "@/components/ui/drawer";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { login, signup } from "@/lib/actions";
-import { useState } from "react";
 import { Button } from "./ui/button";
 
 export function LoginDialog() {
@@ -30,7 +30,7 @@ export function LoginDialog() {
         <DialogTrigger asChild>
           <Button variant="outline">Login</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className=" sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Login</DialogTitle>
           </DialogHeader>
@@ -66,10 +66,10 @@ function LoginForm() {
       <input id="email" name="email" required type="email" />
       <label htmlFor="password">Password:</label>
       <input id="password" name="password" required type="password" />
-      <button formAction={login} type="button">
+      <button formAction={login} type="submit">
         Log in
       </button>
-      <button formAction={signup} type="button">
+      <button formAction={signup} type="submit">
         Sign up
       </button>
     </form>
