@@ -22,7 +22,7 @@ export function CreateJobOffer() {
         </DrawerHeader>
         <DrawerFooter>
           <Button>Create</Button>
-          <DrawerClose>
+          <DrawerClose asChild>
             <Button>Close</Button>
           </DrawerClose>
         </DrawerFooter>
