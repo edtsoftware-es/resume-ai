@@ -8,7 +8,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      {JSON.stringify(data.user, null, 2)}
+      <div>{JSON.stringify(data.user, null, 2)}</div>
       <h1>hello world</h1>
       <LoginDialog />
       <ForesightLink href="/profile" name="profile">
