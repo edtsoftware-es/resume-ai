@@ -1,3 +1,9 @@
+import { LoginDialog } from "@/components/login-dialog";
 export default function HomePage() {
-  return <h1>hello world resume ai</h1>;
+  return (
+    <div>
+      <h1>hello world</h1>
+      <LoginDialog />
+    </div>
+  );
 }
