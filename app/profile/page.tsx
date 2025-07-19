@@ -1,5 +1,6 @@
-import { Suspense } from 'react';
-import { JobOffersList } from '@/components/job-offers-list';
+import { Suspense } from "react";
+import { CreateJobOffer } from "@/components/create-job-offer";
+import { JobOffersList } from "@/components/job-offers-list";
 
 export default function ProfilePage() {
   return (
@@ -8,6 +9,7 @@ export default function ProfilePage() {
       <Suspense fallback={<div>Loading...</div>}>
         <JobOffersList />
       </Suspense>
+      <CreateJobOffer />
     </div>
   );
 }

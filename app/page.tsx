@@ -1,6 +1,6 @@
-import { LoginDialog } from '@/components/login-dialog';
-import { ForesightLink } from '@/components/ui/foresight-link';
-import { createClient } from '@/lib/supabase/server';
+import { LoginDialog } from "@/components/login-dialog";
+import { ForesightLink } from "@/components/ui/foresight-link";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function HomePage() {
   const supabase = await createClient();
