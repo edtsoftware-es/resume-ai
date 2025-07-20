@@ -1,13 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Drawer,
   DrawerClose,
@@ -16,14 +24,15 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import { login, signup } from "@/lib/actions";
-import { Button } from "./ui/button";
+} from '@/components/ui/drawer';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useMediaQuery } from '@/hooks/use-media-query';
+import { login, signup } from '@/lib/actions';
 
 export function LoginDialog() {
   const [open, setOpen] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery('(min-width: 768px)');
   if (isDesktop) {
     return (
       <Dialog onOpenChange={setOpen} open={open}>
@@ -32,7 +41,7 @@ export function LoginDialog() {
         </DialogTrigger>
         <DialogContent className=" sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Login</DialogTitle>
+            <DialogTitle className="sr-only">Login</DialogTitle>
           </DialogHeader>
           <LoginForm />
         </DialogContent>
@@ -61,17 +70,59 @@ export function LoginDialog() {
 
 function LoginForm() {
   return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" required type="email" />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" required type="password" />
-      <button formAction={login} type="submit">
-        Log in
-      </button>
-      <button formAction={signup} type="submit">
-        Sign up
-      </button>
-    </form>
+    <Card className="mx-auto w-full max-w-md">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-center font-bold text-2xl">
+          Accede a Resume AI
+        </CardTitle>
+        <CardDescription className="text-center">
+          Ingresa tu email y contraseña para continuar
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              placeholder="tu@email.com"
+              required
+              type="email"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="password">Contraseña</Label>
+            <Input
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              required
+              type="password"
+            />
+          </div>
+
+          <div className="space-y-2 pt-2">
+            <Button className="w-full" formAction={login} type="submit">
+              Iniciar Sesión
+            </Button>
+
+            <Button
+              className="w-full bg-transparent"
+              formAction={signup}
+              type="submit"
+              variant="outline"
+            >
+              Crear Cuenta
+            </Button>
+          </div>
+        </form>
+
+        <div className="mt-4 text-center text-muted-foreground text-sm">
+          <p>Al continuar, aceptas nuestros términos y condiciones</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
