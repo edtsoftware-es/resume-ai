@@ -2,11 +2,11 @@ import { SideNav } from '@/components/side-nav';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen flex-col justify-center pt-6 md:flex-row md:overflow-hidden">
-      <div className="h-full w-full flex-none md:w-64">
+    <div className="flex h-screen flex-row justify-center overflow-hidden pt-6">
+      <div className="h-full w-64 flex-none">
         <SideNav />
       </div>
-      <div className="flex-grow px-6 md:overflow-y-auto">{children}</div>
+      <div className="flex-grow overflow-y-auto px-6">{children}</div>
     </div>
   );
 }
