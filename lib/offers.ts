@@ -8,6 +8,7 @@ export async function getOffer(id: string) {
     .eq('id', Number(id))
     .single();
 
+  console.log(job);
   return job;
 }
 

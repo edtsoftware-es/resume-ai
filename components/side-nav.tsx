@@ -12,13 +12,13 @@ export async function SideNav() {
 
   return (
     <nav className="h-full border-r-1">
-      <ul className="flex h-full flex-col items-center gap-6">
+      <ul className="flex h-full w-full flex-col items-center gap-6 px-4">
         <li className="flex justify-center">
           <Button>Crear nueva oferta</Button>
         </li>
-        <span className="h-[1px] w-[90%] bg-gray-300" />
+        <span className="h-[1px] w-full bg-gray-300" />
         {jobOffers?.map((jobOffer) => (
-          <li key={jobOffer.id}>
+          <li className="w-full" key={jobOffer.id}>
             <JobOfferItem jobOffer={jobOffer} key={jobOffer.id} />
           </li>
         ))}
