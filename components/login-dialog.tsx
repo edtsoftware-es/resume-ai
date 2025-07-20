@@ -70,7 +70,7 @@ export function LoginDialog() {
 
 function LoginForm() {
   return (
-    <Card className="mx-auto w-full max-w-md">
+    <Card className="mx-auto w-full max-w-md border-none shadow-none">
       <CardHeader className="space-y-1">
         <CardTitle className="text-center font-bold text-2xl">
           Accede a Resume AI

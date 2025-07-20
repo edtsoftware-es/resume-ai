@@ -26,7 +26,7 @@ export function JobOfferItem({ jobOffer }: { jobOffer: JobOffer }) {
   return (
     <ForesightLink
       className="text-blue-500 hover:underline"
-      href={`/profile/jobs/${jobOffer.id}`}
+      href={`/dashboard/${jobOffer.id}`}
       name={`job-${jobOffer.id}`}
     >
       <Card>
