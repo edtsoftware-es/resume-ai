@@ -7,14 +7,22 @@ import {
 } from '@/components/ui/card';
 import { ForesightLink } from '@/components/ui/foresight-link';
 import type { Tables } from '@/database.types';
-import { createClient } from '@/lib/supabase/server';
 import { CreateJobOffer } from './create-job-offer';
 
-interface JobOfferItem {
-  jobOffer: Tables<'job_offers'>;
+type JobOffer = Tables<'job_offers'>;
+
+export function JobOffersList({ jobOffers }: { jobOffers: JobOffer[] }) {
+  return (
+    <ul className="grid grid-cols-4 gap-6">
+      {jobOffers?.map((job) => (
+        <JobOfferItem jobOffer={job} key={job.id} />
+      ))}
+      <CreateJobOffer />
+    </ul>
+  );
 }
 
-export function JobOfferItem({ jobOffer }: JobOfferItem) {
+export function JobOfferItem({ jobOffer }: { jobOffer: JobOffer }) {
   return (
     <ForesightLink
       className="text-blue-500 hover:underline"
@@ -34,23 +42,5 @@ export function JobOfferItem({ jobOffer }: JobOfferItem) {
         </CardFooter>
       </Card>
     </ForesightLink>
-  );
-}
-
-export async function JobOffersList() {
-  const supabase = await createClient();
-  const { data: user } = await supabase.auth.getUser();
-  const { data: jobOffers } = await supabase
-    .from('job_offers')
-    .select('*')
-    .eq('user_id', user?.user?.id ?? '');
-
-  return (
-    <ul className="grid grid-cols-4 gap-6">
-      {jobOffers?.map((jobOffer) => (
-        <JobOfferItem jobOffer={jobOffer} key={jobOffer.id} />
-      ))}
-      <CreateJobOffer />
-    </ul>
   );
 }

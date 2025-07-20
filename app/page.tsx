@@ -1,22 +1,20 @@
-import { LoginDialog } from "@/components/login-dialog";
-import { ForesightLink } from "@/components/ui/foresight-link";
-import { createClient } from "@/lib/supabase/server";
+import { LoginDialog } from '@/components/login-dialog';
+import { ForesightLink } from '@/components/ui/foresight-link';
+import { getUser } from '@/lib/user';
 
 export default async function HomePage() {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getUser();
+  const user = await getUser();
 
   return (
     <div>
       <h1>hello world</h1>
-      {data?.user
-        ?
-        <>
-          <ForesightLink href="/profile" name="profile">
-            Go to profile
-          </ForesightLink>
-        </>
-        : <LoginDialog />}
+      {user ? (
+        <ForesightLink href="/dashboard" name="profile">
+          Go to dashboard
+        </ForesightLink>
+      ) : (
+        <LoginDialog />
+      )}
     </div>
   );
 }

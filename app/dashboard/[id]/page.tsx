@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { CandidatesRanking } from '@/components/candidates-ranking';
-import { createClient } from '@/lib/supabase/server';
+import { getOffer } from '@/lib/offers';
 
 export default async function JobPage({
   params,
@@ -8,17 +8,11 @@ export default async function JobPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const supabase = await createClient();
-  const { data: job } = await supabase
-    .from('job_offers')
-    .select('*')
-    .eq('id', Number(id))
-    .single();
+  const job = await getOffer(id)
 
   if (!job) {
     return <h1>Job not found</h1>;
   }
-
 
   return (
     <>
