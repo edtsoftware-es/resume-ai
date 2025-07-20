@@ -8,12 +8,15 @@ export default async function HomePage() {
 
   return (
     <div>
-      <div>{JSON.stringify(data.user, null, 2)}</div>
       <h1>hello world</h1>
-      <LoginDialog />
-      <ForesightLink href="/profile" name="profile">
-        Go to profile
-      </ForesightLink>
+      {data?.user
+        ?
+        <>
+          <ForesightLink href="/profile" name="profile">
+            Go to profile
+          </ForesightLink>
+        </>
+        : <LoginDialog />}
     </div>
   );
 }
